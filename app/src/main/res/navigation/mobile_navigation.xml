@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_matching">
+
+    <fragment
+        android:id="@+id/navigation_matching"
+        android:name="com.example.seremeety.ui.matching.MatchingFragment"
+        android:label="@string/title_matching"
+        tools:layout="@layout/fragment_matching" />
+
+    <fragment
+        android:id="@+id/navigation_request"
+        android:name="com.example.seremeety.ui.request.RequestFragment"
+        android:label="@string/title_request"
+        tools:layout="@layout/fragment_request" />
+
+    <fragment
+        android:id="@+id/navigation_chatlist"
+        android:name="com.example.seremeety.ui.chatlist.ChatListFragment"
+        android:label="@string/title_chatlist"
+        tools:layout="@layout/fragment_chat_list" />
+
+    <fragment
+        android:id="@+id/navigation_mypage"
+        android:name="com.example.seremeety.ui.mypage.MypageFragment"
+        android:label="@string/title_mypage"
+        tools:layout="@layout/fragment_mypage" />
+</navigation>

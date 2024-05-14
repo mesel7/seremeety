@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Seremeety</string>
+    <string name="title_matching">Matching</string>
+    <string name="title_request">Request</string>
+    <string name="title_chatlist">ChatList</string>
+    <string name="title_mypage">MyPage</string>
 </resources>

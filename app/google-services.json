@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "139601063272",
+    "project_id": "seremeety",
+    "storage_bucket": "seremeety.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139601063272:android:d598fb3d9f0fa060abfadd",
+        "android_client_info": {
+          "package_name": "com.example.seremeety"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPL7gp71YwcU255fBwypzmKBUWJA6ug7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
