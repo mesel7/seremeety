@@ -1,4 +1,4 @@
-package com.example.seremeety.ui.chatlist;
+package com.example.seremeety.ui.chat_list;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

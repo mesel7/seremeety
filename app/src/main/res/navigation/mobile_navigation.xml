@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_chatlist"
-        android:name="com.example.seremeety.ui.chatlist.ChatListFragment"
+        android:name="com.example.seremeety.ui.chat_list.ChatListFragment"
         android:label="@string/title_chatlist"
         tools:layout="@layout/fragment_chat_list" />
 

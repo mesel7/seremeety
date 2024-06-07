@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.chatlist.ChatListFragment">
+        tools:context=".ui.chat_list.ChatListFragment">
 
         <TextView
             android:id="@+id/text_chat_list"

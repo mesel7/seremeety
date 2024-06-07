@@ -1,4 +1,4 @@
-package com.example.seremeety.ui.chatlist;
+package com.example.seremeety.ui.chat_list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
