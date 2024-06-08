@@ -1,5 +1,6 @@
 package com.example.seremeety.ui.matching;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.seremeety.databinding.FragmentMatchingBinding;
+import com.example.seremeety.ui.detail_profile.DetailProfileActivity;
+import com.example.seremeety.utils.DialogUtils;
+import com.google.gson.Gson;
 
 import java.util.Map;
 
@@ -38,9 +42,19 @@ public class MatchingFragment extends Fragment {
                     binding.glMatching.addView(profileCard);
 
                     profileCard.setOnClickListener(v -> {
-                        //Intent intent = new Intent(getContext(), ProfileDetailActivity.class);
-                        //intent.putExtra("userId", String.valueOf(profile.get("uid")));
-                        //startActivity(intent);
+                        matchingViewModel.checkProfileStatus(new MatchingViewModel.OnProfileCheckCallback() {
+                            @Override
+                            public void onIncompleteProfile() {
+                                DialogUtils.showConfirmationDialog(requireContext(), "프로필 열람", "먼저 프로필을 완성해주세요");
+                            }
+
+                            @Override
+                            public void onCompleteProfile() {
+                                Intent intent = new Intent(getContext(), DetailProfileActivity.class);
+                                intent.putExtra("profile", new Gson().toJson(profile));
+                                startActivity(intent);
+                            }
+                        });
                     });
                 }
             }

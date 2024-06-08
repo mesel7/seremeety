@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="소개팅 프로필"
+                android:text="프로필 카드"
                 android:textSize="28dp"
                 android:textColor="@color/black"/>
 

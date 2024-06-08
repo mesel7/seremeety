@@ -17,9 +17,13 @@ import java.util.Map;
 
 public class MatchingViewModel extends ViewModel {
     private final MutableLiveData<List<Map<String, Object>>> profiles = new MutableLiveData<>();
-
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    public interface OnProfileCheckCallback {
+        void onIncompleteProfile();
+        void onCompleteProfile();
+    }
 
     public void fetchProfiles() {
         DocumentReference userRef = db.collection("users").document(auth.getCurrentUser().getUid());
@@ -28,6 +32,7 @@ public class MatchingViewModel extends ViewModel {
                 String gender = String.valueOf(documentSnapshot.getData().get("gender"));
                 db.collection("users")
                         .whereNotEqualTo("gender", gender)
+                        .whereEqualTo("profileStatus", 1)
                         .get()
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
@@ -43,6 +48,20 @@ public class MatchingViewModel extends ViewModel {
                                 Log.d("MatchingViewModel", "Error getting documents: ", task.getException());
                             }
                         });
+            }
+        });
+    }
+
+    public void checkProfileStatus(OnProfileCheckCallback callback) {
+        DocumentReference userRef = db.collection("users").document(auth.getCurrentUser().getUid());
+        userRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                long profileStatus = (long) documentSnapshot.getData().get("profileStatus");
+                if (profileStatus == 0) {
+                    callback.onIncompleteProfile();
+                } else {
+                    callback.onCompleteProfile();
+                }
             }
         });
     }

@@ -26,6 +26,10 @@
             android:name=".HomeActivity"
             android:windowSoftInputMode="adjustResize">
         </activity>
+        <activity
+            android:name=".ui.detail_profile.DetailProfileActivity"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
 
     </application>
 
