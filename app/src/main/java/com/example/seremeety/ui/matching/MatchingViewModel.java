@@ -25,6 +25,8 @@ public class MatchingViewModel extends ViewModel {
         void onCompleteProfile();
     }
 
+    // 조건에 맞는 상대의 프로필 정보를 가져옴
+    // 매칭 생성을 위해 실제 파이어베이스 데이터와는 달리 uid도 프로필 필드의 하나로 추가함
     public void fetchProfiles() {
         DocumentReference userRef = db.collection("users").document(auth.getCurrentUser().getUid());
         userRef.get().addOnSuccessListener(documentSnapshot -> {
@@ -41,7 +43,9 @@ public class MatchingViewModel extends ViewModel {
                                     if (document.getId().equals(auth.getCurrentUser().getUid())) {
                                         continue;
                                     }
-                                    profileList.add(document.getData());
+                                    Map<String, Object> profile = document.getData();
+                                    profile.put("uid", document.getId());
+                                    profileList.add(profile);
                                 }
                                 profiles.setValue(profileList);
                             } else {
@@ -69,7 +73,6 @@ public class MatchingViewModel extends ViewModel {
     public LiveData<List<Map<String, Object>>> getProfiles() {
         return profiles;
     }
-
     public void clearProfiles() {
         profiles.setValue(null);
     }

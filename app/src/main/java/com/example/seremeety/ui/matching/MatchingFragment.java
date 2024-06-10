@@ -26,8 +26,7 @@ public class MatchingFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        matchingViewModel =
-                new ViewModelProvider(this).get(MatchingViewModel.class);
+        matchingViewModel = new ViewModelProvider(this).get(MatchingViewModel.class);
 
         binding = FragmentMatchingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
