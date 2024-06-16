@@ -2,11 +2,13 @@ package com.example.seremeety.ui.chat_room;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -75,9 +77,13 @@ public class ChatRoomActivity extends AppCompatActivity {
                 }
         );
 
-        // 메시지 입력 필드와 전송 버튼 설정
+        // 채팅방 메뉴에 상대 닉네임 표시, 메시지 입력 필드와 전송 버튼 설정
+        TextView chatRoomOtherNickname = findViewById(R.id.chat_room_other_nickname);
         EditText inputMessage = findViewById(R.id.input_message);
         Button sendMessage = findViewById(R.id.send_message);
+
+        chatRoomOtherNickname.setText(String.valueOf(((Map<String, Object>) chatRoom.get("profile")).get("nickname")));
+        inputMessage.setFilters(new InputFilter[]{}); // 글자 수 제한 없앰
 
         inputMessage.addTextChangedListener(new TextWatcher() {
             @Override

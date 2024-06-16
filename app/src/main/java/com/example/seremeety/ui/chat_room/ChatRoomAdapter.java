@@ -1,5 +1,6 @@
 package com.example.seremeety.ui.chat_room;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.seremeety.R;
+import com.example.seremeety.ui.detail_profile.DetailProfileActivity;
+import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -102,16 +105,18 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     static class OtherMessageViewHolder extends RecyclerView.ViewHolder {
         ImageView messageProfilePicture;
-        TextView otherMessageText, otherMessageSentAt;
+        TextView otherMessageSenderNickname, otherMessageText, otherMessageSentAt;
 
         OtherMessageViewHolder(View itemView) {
             super(itemView);
             messageProfilePicture = itemView.findViewById(R.id.message_profile_picture);
+            otherMessageSenderNickname = itemView.findViewById(R.id.other_message_sender_nickname);
             otherMessageText = itemView.findViewById(R.id.other_message_text);
             otherMessageSentAt = itemView.findViewById(R.id.other_message_sent_at);
         }
 
         void bind(Map<String, Object> message) {
+            otherMessageSenderNickname.setText(String.valueOf(message.get("senderNickname")));
             otherMessageText.setText(String.valueOf(message.get("text")));
 
             com.google.firebase.Timestamp timestamp = (com.google.firebase.Timestamp) message.get("sentAt");
@@ -134,6 +139,15 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     .placeholder(R.drawable.img_default_profile)
                     .error(R.drawable.img_default_profile)
                     .into(messageProfilePicture);
+
+            // 프로필 사진 클릭 시 상세 프로필로 이동
+            messageProfilePicture.setOnClickListener(v -> {
+                Map<String, Object> profile = (Map<String, Object>) chatRoom.get("profile");
+                Intent intent = new Intent(itemView.getContext(), DetailProfileActivity.class);
+                intent.putExtra("profile", new Gson().toJson(profile));
+                intent.putExtra("viewOnly", true); // 상세 프로필을 보기만 함(매칭 기능 비활성화)
+                itemView.getContext().startActivity(intent);
+            });
         }
     }
 }

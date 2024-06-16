@@ -1,5 +1,6 @@
 package com.example.seremeety.ui.request;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,9 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.example.seremeety.R;
@@ -80,16 +84,16 @@ public class RequestCard extends LinearLayout {
         String statusText;
         switch (String.valueOf(data.get("status"))) {
             case "pending":
-                statusText = "대기 중";
+                statusText = "매칭 대기";
                 requestStatus.setBackgroundResource(R.drawable.button_unchecked_style);
                 break;
             case "accepted":
-                statusText = "수락";
+                statusText = "매칭 수락";
                 requestStatus.setBackgroundResource(R.drawable.button_checked_style);
                 break;
             case "rejected":
-                statusText = "거절";
-                requestStatus.setBackgroundResource(R.drawable.button_checked_style);
+                statusText = "매칭 거절";
+                requestStatus.setBackgroundResource(R.drawable.button_rejected_style);
                 break;
             default:
                 statusText = "";
@@ -116,7 +120,8 @@ public class RequestCard extends LinearLayout {
             public void onAcceptSuccess() {
                 DialogUtils.showDialog(context, "매칭 수락!", "채팅방이 생성되었어요!\n채팅 목록으로 이동할까요?",
                         (dialog, which) -> {
-                            // 채팅 목록 프라그먼트로 이동
+                            NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_activity_home);
+                            navController.navigate(R.id.navigation_chatlist);
                         }, null);
             }
 
@@ -139,7 +144,8 @@ public class RequestCard extends LinearLayout {
                 case "accepted":
                     DialogUtils.showDialog(context, "매칭 성공!", "채팅방이 생성되었어요!\n채팅 목록으로 이동할까요?",
                             (dialog, which) -> {
-                                // 채팅 목록 프라그먼트로 이동
+                                NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_activity_home);
+                                navController.navigate(R.id.navigation_chatlist);
                             }, null);
                     break;
                 case "rejected":
@@ -160,7 +166,8 @@ public class RequestCard extends LinearLayout {
                 case "accepted":
                     DialogUtils.showDialog(context, "매칭 성공!", "채팅방이 생성되었어요!\n채팅 목록으로 이동할까요?",
                             (dialog, which) -> {
-                                // 채팅 목록 프라그먼트로 이동
+                                NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_activity_home);
+                                navController.navigate(R.id.navigation_chatlist);
                             }, null);
                     break;
                 case "rejected":

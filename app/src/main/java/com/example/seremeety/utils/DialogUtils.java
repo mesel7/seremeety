@@ -3,6 +3,7 @@ package com.example.seremeety.utils;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -45,14 +46,17 @@ public class DialogUtils {
 
         TextView dialogTitle = dialogView.findViewById(R.id.dialog_title);
         TextView dialogMessage = dialogView.findViewById(R.id.dialog_message);
+        TextView dialogButtonBar = dialogView.findViewById(R.id.dialog_button_bar);
         Button positiveButton = dialogView.findViewById(R.id.positive_button);
         Button negativeButton = dialogView.findViewById(R.id.negative_button);
 
         dialogTitle.setText(title);
         dialogMessage.setText(message);
         AlertDialog dialog = builder.create(); // dialog 변수 선언
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
         if (showNegativeButton) {
+            dialogButtonBar.setVisibility(View.VISIBLE);
             negativeButton.setVisibility(View.VISIBLE);
             negativeButton.setOnClickListener(v -> {
                 if (negativeButtonListener != null) {
