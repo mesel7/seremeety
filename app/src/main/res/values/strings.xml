@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Seremeety</string>
-    <string name="title_matching">Matching</string>
-    <string name="title_request">Request</string>
-    <string name="title_chatlist">ChatList</string>
-    <string name="title_mypage">MyPage</string>
+    <string name="title_matching">매칭</string>
+    <string name="title_request">요청</string>
+    <string name="title_chatlist">채팅</string>
+    <string name="title_mypage">마이페이지</string>
     <string-array name="mbti_types">
         <item>ISTJ</item>
         <item>ISFJ</item>

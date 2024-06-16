@@ -30,14 +30,16 @@
                 android:hint="전화번호를 입력해주세요"
                 android:background="@drawable/edit_text_style"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_send_code"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/button_style"
                 android:layout_marginBottom="10dp"
                 android:text="인증번호 전송"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/verification_code"
@@ -51,14 +53,16 @@
                 android:hint="인증번호를 입력해주세요"
                 android:background="@drawable/edit_text_style"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/button_style"
                 android:layout_marginBottom="10dp"
                 android:text="로그인"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

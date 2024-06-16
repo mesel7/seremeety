@@ -30,6 +30,10 @@
             android:name=".ui.detail_profile.DetailProfileActivity"
             android:windowSoftInputMode="adjustResize">
         </activity>
+        <activity
+            android:name=".ui.chat_room.ChatRoomActivity"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
 
     </application>
 

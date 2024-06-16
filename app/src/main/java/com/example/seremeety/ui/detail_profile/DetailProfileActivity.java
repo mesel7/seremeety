@@ -1,5 +1,7 @@
 package com.example.seremeety.ui.detail_profile;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
+import com.example.seremeety.HomeActivity;
 import com.example.seremeety.R;
 import com.example.seremeety.databinding.ActivityDetailProfileBinding;
 import com.example.seremeety.utils.DialogUtils;
@@ -27,13 +30,30 @@ public class DetailProfileActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        detailProfileViewModel = new ViewModelProvider(this).get(DetailProfileViewModel.class);
-
         // Intent에서 가져온 JSON 문자열을 Map으로 변환
         String profileJson = getIntent().getStringExtra("profile");
         Map<String, Object> profile = new Gson().fromJson(profileJson, new TypeToken<Map<String, Object>>(){}.getType());
 
         displayProfileData(profile);
+
+        // viewOnly 값에 따라 요청 버튼을 표시하거나 숨김
+        boolean viewOnly = getIntent().getBooleanExtra("viewOnly", false);
+        if (viewOnly) {
+            binding.matchingRequest.setVisibility(View.GONE);
+        } else {
+            // viewOnly가 false인 경우에만 뷰모델 초기화
+            detailProfileViewModel = new ViewModelProvider(this).get(DetailProfileViewModel.class);
+
+            binding.matchingRequest.setVisibility(View.VISIBLE);
+            binding.matchingRequest.setOnClickListener(v -> {
+                DialogUtils.showDialog(DetailProfileActivity.this, "매칭 요청", "요청을 보내시겠어요?",
+                        (dialog, which) -> {
+                            confirmAndSendMatchingRequest(String.valueOf(profile.get("uid")));
+                        },
+                        (dialog, which) -> dialog.dismiss()
+                );
+            });
+        }
 
         // 매칭 요청
         binding.matchingRequest.setOnClickListener(v -> {
@@ -81,8 +101,11 @@ public class DetailProfileActivity extends AppCompatActivity {
             public void onRequestExists() {
                 DialogUtils.showDialog(DetailProfileActivity.this, "매칭 요청", "상대분께 이미 요청을 보내셨어요\n요청 페이지로 갈까요?",
                         (dialog, which) -> {
-                            // Intent intent = new Intent(DetailProfileActivity.this, RequestPageActivity.class);
-                            // startActivity(intent);
+                            SharedPreferences sharedPreferences = getSharedPreferences("PREFERENCE_NAME", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("openRequestFragment", true);
+                            editor.apply();
+                            finish();
                         },
                         (dialog, which) -> dialog.dismiss()
                 );
@@ -92,8 +115,11 @@ public class DetailProfileActivity extends AppCompatActivity {
             public void onRequestReceived() {
                 DialogUtils.showDialog(DetailProfileActivity.this, "매칭 요청", "상대분께 이미 요청을 받으셨어요\n요청 페이지로 갈까요?",
                         (dialog, which) -> {
-                            // Intent intent = new Intent(DetailProfileActivity.this, RequestPageActivity.class);
-                            // startActivity(intent);
+                            SharedPreferences sharedPreferences = getSharedPreferences("PREFERENCE_NAME", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("openRequestFragment", true);
+                            editor.apply();
+                            finish();
                         },
                         (dialog, which) -> dialog.dismiss()
                 );

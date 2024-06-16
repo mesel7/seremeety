@@ -22,6 +22,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="프로필 카드"
                 android:textSize="28dp"
+                android:textStyle="bold"
                 android:textColor="@color/black"/>
 
             <ScrollView

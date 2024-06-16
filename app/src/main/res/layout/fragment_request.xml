@@ -7,16 +7,75 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.request.RequestFragment">
-
-        <TextView
-            android:id="@+id/text_request"
+        tools:context=".ui.request.RequestFragment"
+        android:background="@drawable/img_background1">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:layout_margin="30dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="요청"
+                    android:textSize="28dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textAlignment="viewStart" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_request"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_received"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="4dp"
+                            android:text="받은 요청"
+                            android:textSize="18dp"
+                            android:textColor="@color/white"
+                            android:paddingHorizontal="16dp"
+                            android:checked="true"
+                            android:button="@null"
+                            android:background="@drawable/radio_button_style" />
+
+                        <RadioButton
+                            android:id="@+id/radio_sent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="보낸 요청"
+                            android:textSize="18dp"
+                            android:textColor="@color/white"
+                            android:paddingHorizontal="16dp"
+                            android:button="@null"
+                            android:background="@drawable/radio_button_style" />
+                    </RadioGroup>
+
+            </LinearLayout>
+            <ScrollView
+                android:id="@+id/sv_request"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/ll_request"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="120dp"
+                    android:orientation="vertical">
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
     </LinearLayout>
 </layout>

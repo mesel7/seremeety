@@ -7,16 +7,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.chat_list.ChatListFragment">
-
-        <TextView
-            android:id="@+id/text_chat_list"
+        tools:context=".ui.chat_list.ChatListFragment"
+        android:background="@drawable/img_background1">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:layout_margin="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="채팅"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <ScrollView
+                android:id="@+id/sv_chat_list"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/ll_chat_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="120dp"
+                    android:orientation="vertical">
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
     </LinearLayout>
 </layout>
