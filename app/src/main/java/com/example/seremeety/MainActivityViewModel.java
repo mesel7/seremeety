@@ -20,14 +20,9 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivityViewModel extends ViewModel {
-    private FirebaseAuth auth;
-    private FirebaseFirestore db;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String verificationId;
-
-    public MainActivityViewModel() {
-        auth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
-    }
 
     public boolean isUserSignedIn() {
         return (auth.getCurrentUser() != null);

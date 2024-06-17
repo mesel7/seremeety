@@ -42,6 +42,10 @@
             android:name=".ui.shop.ShopActivity"
             android:windowSoftInputMode="adjustResize">
         </activity>
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
 
     </application>
 

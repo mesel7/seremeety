@@ -21,9 +21,6 @@ public class MypageViewModel extends ViewModel {
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final FirebaseStorage storage = FirebaseStorage.getInstance();
-    public LiveData<Map<String, Object>> getUserData() {
-        return userData;
-    }
 
     public interface UpdateUserDataCallback {
         void onComplete(boolean success);
@@ -73,7 +70,7 @@ public class MypageViewModel extends ViewModel {
                 });
     }
 
-    public void doSignOut() {
-        auth.signOut();
+    public LiveData<Map<String, Object>> getUserData() {
+        return userData;
     }
 }

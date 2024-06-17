@@ -64,7 +64,8 @@
                             android:layout_height="wrap_content"
                             android:text="닉네임"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <EditText
                             android:id="@+id/display_nickname"
                             android:layout_width="160dp"
@@ -85,7 +86,8 @@
                             android:layout_height="wrap_content"
                             android:text="기본 정보"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <EditText
                             android:id="@+id/display_age"
                             android:layout_width="70dp"
@@ -126,7 +128,8 @@
                             android:layout_height="wrap_content"
                             android:text="학교"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <EditText
                             android:id="@+id/display_university"
                             android:layout_width="160dp"
@@ -147,7 +150,8 @@
                             android:layout_height="wrap_content"
                             android:text="지역"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <EditText
                             android:id="@+id/display_place"
                             android:layout_width="160dp"
@@ -164,7 +168,8 @@
                         android:text="소개 한 마디"
                         android:textSize="18dp"
                         android:textColor="@color/black"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold"/>
                     <EditText
                         android:id="@+id/display_introduce"
                         android:layout_width="match_parent"

@@ -118,11 +118,7 @@ public class RequestCard extends LinearLayout {
         RequestViewModel.OnRequestUpdateCallback callback = new RequestViewModel.OnRequestUpdateCallback() {
             @Override
             public void onAcceptSuccess() {
-                DialogUtils.showDialog(context, "매칭 수락!", "채팅방이 생성되었어요!\n채팅 목록으로 이동할까요?",
-                        (dialog, which) -> {
-                            NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_activity_home);
-                            navController.navigate(R.id.navigation_chatlist);
-                        }, null);
+                DialogUtils.showConfirmationDialog(context, "매칭 성공!", "채팅방이 생성되었어요!\n채팅 목록을 확인해보세요");
             }
 
             @Override
@@ -142,11 +138,7 @@ public class RequestCard extends LinearLayout {
                     DialogUtils.showConfirmationDialog(context, "결정 대기", "결정 대기 중이에요\n조금만 기다려주세요");
                     break;
                 case "accepted":
-                    DialogUtils.showDialog(context, "매칭 성공!", "채팅방이 생성되었어요!\n채팅 목록으로 이동할까요?",
-                            (dialog, which) -> {
-                                NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_activity_home);
-                                navController.navigate(R.id.navigation_chatlist);
-                            }, null);
+                    DialogUtils.showConfirmationDialog(context, "매칭 성공!", "채팅방이 생성되어있어요");
                     break;
                 case "rejected":
                     DialogUtils.showConfirmationDialog(context, "매칭 실패", "거절된 매칭이에요");
@@ -155,20 +147,17 @@ public class RequestCard extends LinearLayout {
         } else if (requestType == R.id.radio_received) {
             switch (status) {
                 case "pending":
-                    DialogUtils.showDialog(context, "요청 수락", "요청을 수락하시겠어요?",
+                    DialogUtils.showAcceptOrRejectDialog(context, "요청 수락", "요청을 수락하시겠어요?",
                             (dialog, which) -> {
                                 requestViewModel.updateRequestStatus(requestId, requestTo, requestFrom,"accepted", requestType, callback);
                             },
                             (dialog, which) -> {
                                 requestViewModel.updateRequestStatus(requestId, requestTo, requestFrom, "rejected", requestType, callback);
-                            });
+                            }
+                    );
                     break;
                 case "accepted":
-                    DialogUtils.showDialog(context, "매칭 성공!", "채팅방이 생성되었어요!\n채팅 목록으로 이동할까요?",
-                            (dialog, which) -> {
-                                NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_activity_home);
-                                navController.navigate(R.id.navigation_chatlist);
-                            }, null);
+                    DialogUtils.showConfirmationDialog(context, "매칭 성공!", "채팅방이 생성되어있어요");
                     break;
                 case "rejected":
                     DialogUtils.showConfirmationDialog(context, "매칭 실패", "거절된 매칭이에요");

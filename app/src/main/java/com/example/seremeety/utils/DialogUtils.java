@@ -19,6 +19,7 @@ public class DialogUtils {
                 message,
                 false, // 확인 버튼만 보여줌
                 (dialog, which) -> dialog.dismiss(),
+                null,
                 null
         );
     }
@@ -32,13 +33,29 @@ public class DialogUtils {
                 message,
                 true, // 취소 버튼도 보여줌
                 positiveButtonListener,
-                negativeButtonListener
+                negativeButtonListener,
+                null
+        );
+    }
+
+    public static void showAcceptOrRejectDialog(Context context, String title, String message,
+                                                DialogInterface.OnClickListener acceptButtonListener,
+                                                DialogInterface.OnClickListener rejectButtonListener) {
+        showDialogInternal(
+                context,
+                title,
+                message,
+                true, // 취소 버튼도 보여줌
+                acceptButtonListener,
+                rejectButtonListener,
+                (dialog, which) -> dialog.dismiss() // 닫기
         );
     }
 
     private static void showDialogInternal(Context context, String title, String message, boolean showNegativeButton,
-                                                 DialogInterface.OnClickListener positiveButtonListener,
-                                                 DialogInterface.OnClickListener negativeButtonListener) {
+                                           DialogInterface.OnClickListener positiveButtonListener,
+                                           DialogInterface.OnClickListener negativeButtonListener,
+                                           DialogInterface.OnClickListener closeButtonListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View dialogView = inflater.inflate(R.layout.alert_dialog, null);
@@ -49,28 +66,37 @@ public class DialogUtils {
         TextView dialogButtonBar = dialogView.findViewById(R.id.dialog_button_bar);
         Button positiveButton = dialogView.findViewById(R.id.positive_button);
         Button negativeButton = dialogView.findViewById(R.id.negative_button);
+        Button closeButton = dialogView.findViewById(R.id.close_button);
 
         dialogTitle.setText(title);
         dialogMessage.setText(message);
-        AlertDialog dialog = builder.create(); // dialog 변수 선언
+        AlertDialog dialog = builder.create();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        if (closeButtonListener != null) {
+            negativeButton.setText("거절");
+            positiveButton.setText("수락");
+            closeButton.setVisibility(View.VISIBLE);
+            closeButton.setOnClickListener(v -> {
+                closeButtonListener.onClick(dialog, DialogInterface.BUTTON_NEUTRAL);
+                dialog.dismiss();
+            });
+        }
 
         if (showNegativeButton) {
             dialogButtonBar.setVisibility(View.VISIBLE);
             negativeButton.setVisibility(View.VISIBLE);
             negativeButton.setOnClickListener(v -> {
                 if (negativeButtonListener != null) {
-                    negativeButtonListener.onClick(dialog, DialogInterface.BUTTON_NEGATIVE); // dialog 전달
+                    negativeButtonListener.onClick(dialog, DialogInterface.BUTTON_NEGATIVE);
                 }
                 dialog.dismiss();
             });
-        } else {
-            negativeButton.setVisibility(View.GONE);
         }
 
         positiveButton.setOnClickListener(v -> {
             if (positiveButtonListener != null) {
-                positiveButtonListener.onClick(dialog, DialogInterface.BUTTON_POSITIVE); // dialog 전달
+                positiveButtonListener.onClick(dialog, DialogInterface.BUTTON_POSITIVE);
             }
             dialog.dismiss();
         });

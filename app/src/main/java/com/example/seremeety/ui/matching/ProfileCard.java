@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,62 +19,22 @@ import com.example.seremeety.R;
 import java.util.Map;
 
 public class ProfileCard extends LinearLayout {
-    private ConstraintLayout layout;
     private ImageView profilePicture;
     private TextView nickname;
     private TextView ageGender;
 
     public ProfileCard(Context context) {
         super(context);
-        init();
+        init(context);
     }
 
-    private void init() {
-        setOrientation(VERTICAL);
+    private void init(Context context) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.profile_card, this, true);
 
-        layout = new ConstraintLayout(getContext());
-        layout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 0, 1));
-        layout.setId(View.generateViewId());
-
-        profilePicture = new ImageView(getContext());
-        profilePicture.setId(View.generateViewId());
-        ConstraintLayout.LayoutParams profilePictureParams = new ConstraintLayout.LayoutParams(0, 0);
-        profilePictureParams.dimensionRatio = "1:1";
-        profilePictureParams.startToStart = layout.getId();
-        profilePictureParams.endToEnd = layout.getId();
-        profilePictureParams.topToTop = layout.getId();
-        profilePictureParams.bottomToBottom = layout.getId();
-        profilePicture.setLayoutParams(profilePictureParams);
-        profilePicture.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        profilePicture.setBackgroundResource(R.drawable.image_view_style);
-        profilePicture.setClipToOutline(true);
-
-        nickname = new TextView(getContext());
-        ageGender = new TextView(getContext());
-
-        nickname.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 0, 0.125f));
-        ageGender.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 0, 0.125f));
-
-        nickname.setTextColor(Color.BLACK);
-        nickname.setGravity(Gravity.CENTER_HORIZONTAL);
-        ageGender.setTextColor(Color.BLACK);
-        ageGender.setGravity(Gravity.CENTER_HORIZONTAL);
-
-        layout.addView(profilePicture);
-        addView(layout);
-        addView(nickname);
-        addView(ageGender);
-
-        setPadding(10, 10, 10, 10);
-        setBackgroundResource(R.drawable.profile_card_style);
-
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        int size = Math.min(displayMetrics.widthPixels, displayMetrics.heightPixels) / 2;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(size * 75/100, size * 95/100);
-
-        int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());
-        layoutParams.setMargins(margin, margin, margin, margin);
-        setLayoutParams(layoutParams);
+        profilePicture = view.findViewById(R.id.profile_picture);
+        nickname = view.findViewById(R.id.nickname);
+        ageGender = view.findViewById(R.id.age_gender);
     }
 
     public void setProfileData(Map<String, Object> data) {
@@ -88,6 +49,7 @@ public class ProfileCard extends LinearLayout {
         ageGender.setText(String.valueOf(data.get("age")) + " " + gender);
     }
 }
+
 
 
 

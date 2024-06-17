@@ -34,6 +34,7 @@ import com.example.seremeety.MainActivity;
 import com.example.seremeety.R;
 import com.example.seremeety.databinding.FragmentMypageBinding;
 import com.example.seremeety.ui.detail_profile.DetailProfileActivity;
+import com.example.seremeety.ui.setting.SettingActivity;
 import com.example.seremeety.ui.shop.ShopActivity;
 import com.example.seremeety.utils.DialogUtils;
 import com.example.seremeety.utils.KeyboardVisibilityUtils;
@@ -68,11 +69,10 @@ public class MypageFragment extends Fragment {
         };
         mypageViewModel.getUserData().observe(getViewLifecycleOwner(), userDataObserver);
 
+        // mypageViewModel.fetchUserData();
+
         birthdate = binding.birthdate;
         age = binding.age;
-
-        // 현재 로그인한 사용자 정보를 가져옴
-        mypageViewModel.fetchUserData();
 
         // ActivityResultLauncher 초기화
         pickImageLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -154,18 +154,10 @@ public class MypageFragment extends Fragment {
             startActivity(intent);
         });
 
-        // 로그아웃
-        binding.signOut.setOnClickListener(view -> {
-            DialogUtils.showDialog(requireContext(), "로그아웃", "로그아웃 할까요?",
-                    // 확인 버튼 클릭
-                    (dialog, which) -> {
-                        mypageViewModel.doSignOut();
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent); // MainActivity로 이동
-                    },
-                    // 취소 버튼 클릭
-                    null);
+        // 설정 이동
+        binding.iconSetting.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), SettingActivity.class);
+            startActivity(intent);
         });
 
         return root;
@@ -282,6 +274,14 @@ public class MypageFragment extends Fragment {
         }
     }
 
+    // 화면이 다시 보일 때마다 사용자 프로필을 새로 불러옴
+    // 다른 프라그먼트는 onCreateView에서 처리하고 있지만 상점에서 뒤로가기를 처리하기 위함
+    @Override
+    public void onResume() {
+        super.onResume();
+        mypageViewModel.fetchUserData();
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -291,9 +291,7 @@ public class MypageFragment extends Fragment {
         binding = null;
         if (userDataObserver != null) {
             mypageViewModel.getUserData().removeObserver(userDataObserver);
-            Log.d(TAG, "destroy observer");
         }
-        Log.d(TAG, "onDestroyView");
     }
 }
 

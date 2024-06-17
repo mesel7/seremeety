@@ -14,14 +14,46 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="음표 상점"
-                android:textSize="28dp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="음표 상점"
+                    android:textSize="28dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textAlignment="viewStart" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="bottom">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="나의 음표 "
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_note" />
+                    <TextView
+                        android:id="@+id/shop_activity_coin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,7 +94,7 @@
                             android:layout_marginLeft="4dp"
                             android:background="@drawable/button_style"
                             android:text="15음표 ₩ 3,000"
-                            android:textSize="16dp"
+                            android:textSize="14dp"
                             android:lineSpacingExtra="6dp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
@@ -87,7 +119,7 @@
                             android:layout_marginLeft="4dp"
                             android:background="@drawable/button_style"
                             android:text="55음표 ₩ 9,900\n10% 할인"
-                            android:textSize="16dp"
+                            android:textSize="14dp"
                             android:lineSpacingExtra="6dp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
@@ -112,7 +144,7 @@
                             android:layout_marginLeft="4dp"
                             android:background="@drawable/button_style"
                             android:text="115음표 ₩ 18,400\n20% 할인"
-                            android:textSize="16dp"
+                            android:textSize="14dp"
                             android:lineSpacingExtra="6dp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
@@ -136,8 +168,8 @@
                             android:layout_height="110dp"
                             android:layout_marginLeft="4dp"
                             android:background="@drawable/button_style"
-                            android:text="355음표 ₩ 49700\n30% 할인"
-                            android:textSize="16dp"
+                            android:text="355음표 ₩ 49,700\n30% 할인"
+                            android:textSize="14dp"
                             android:lineSpacingExtra="6dp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>

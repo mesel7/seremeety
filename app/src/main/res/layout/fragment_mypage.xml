@@ -39,7 +39,8 @@
                         android:layout_height="wrap_content"
                         android:text="나의 음표 "
                         android:textSize="18dp"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
                     <ImageView
                         android:id="@+id/icon_note"
                         android:layout_width="24dp"
@@ -51,7 +52,14 @@
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textSize="18dp"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:id="@+id/icon_setting"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/ic_setting" />
                 </LinearLayout>
             </LinearLayout>
             <ScrollView
@@ -95,7 +103,8 @@
                             android:layout_height="wrap_content"
                             android:text="닉네임"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <EditText
                             android:id="@+id/nickname"
                             android:layout_width="160dp"
@@ -115,7 +124,8 @@
                             android:layout_height="wrap_content"
                             android:text="나이"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <EditText
                             android:id="@+id/birthdate"
                             android:layout_width="160dp"
@@ -145,7 +155,8 @@
                             android:layout_height="wrap_content"
                             android:text="성별"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <RadioGroup
                             android:id="@+id/gender"
                             android:layout_width="match_parent"
@@ -181,7 +192,8 @@
                             android:layout_height="wrap_content"
                             android:text="MBTI"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <Spinner
                             android:id="@+id/spinner_mbti"
                             style="@style/SpinnerStyle"
@@ -201,7 +213,8 @@
                             android:layout_height="wrap_content"
                             android:text="학교"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <EditText
                             android:id="@+id/university"
                             android:layout_width="160dp"
@@ -221,7 +234,8 @@
                             android:layout_height="wrap_content"
                             android:text="지역"
                             android:textSize="18dp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <EditText
                             android:id="@+id/place"
                             android:layout_width="160dp"
@@ -237,7 +251,8 @@
                         android:text="소개 한 마디"
                         android:textSize="18dp"
                         android:textColor="@color/black"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold"/>
                     <EditText
                         android:id="@+id/introduce"
                         android:layout_width="match_parent"
@@ -263,41 +278,6 @@
                         android:textStyle="bold"
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/button_style"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_horizontal">
-                        <TextView
-                            android:id="@+id/sign_out"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="로그아웃"
-                            android:textSize="14dp"
-                            android:textColor="#222222"
-                            android:clickable="true"
-                            android:focusable="true"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:text=" | "
-                            android:textSize="14dp"
-                            android:textColor="#222222"/>
-                        <TextView
-                            android:id="@+id/withdrawal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="회원탈퇴"
-                            android:textSize="14dp"
-                            android:textColor="#222222"
-                            android:clickable="true"
-                            android:focusable="true"/>
-                    </LinearLayout>
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
