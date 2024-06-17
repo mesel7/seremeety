@@ -33,6 +33,8 @@ import com.bumptech.glide.Glide;
 import com.example.seremeety.MainActivity;
 import com.example.seremeety.R;
 import com.example.seremeety.databinding.FragmentMypageBinding;
+import com.example.seremeety.ui.detail_profile.DetailProfileActivity;
+import com.example.seremeety.ui.shop.ShopActivity;
 import com.example.seremeety.utils.DialogUtils;
 import com.example.seremeety.utils.KeyboardVisibilityUtils;
 
@@ -145,6 +147,12 @@ public class MypageFragment extends Fragment {
 
         // 프로필 저장
         binding.saveProfile.setOnClickListener(v -> saveUserProfile());
+
+        // 상점 이동
+        binding.textNote.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), ShopActivity.class);
+            startActivity(intent);
+        });
 
         // 로그아웃
         binding.signOut.setOnClickListener(view -> {

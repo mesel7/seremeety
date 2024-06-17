@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.shop.ShopActivity"
+        android:background="@drawable/img_background1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="음표 상점"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="음표는 세레미티 매칭 활동에 사용됩니다:)"
+                android:textSize="14dp"
+                android:textColor="@color/black" />
+
+            <ScrollView
+                android:id="@+id/sv_shop"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="120dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/img_notes1"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/image_view_style"
+                            android:clipToOutline="true"/>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/notes_15"
+                            android:layout_width="match_parent"
+                            android:layout_height="110dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@drawable/button_style"
+                            android:text="15음표 ₩ 3,000"
+                            android:textSize="16dp"
+                            android:lineSpacingExtra="6dp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/img_notes2"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/image_view_style"
+                            android:clipToOutline="true"/>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/notes_55"
+                            android:layout_width="match_parent"
+                            android:layout_height="110dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@drawable/button_style"
+                            android:text="55음표 ₩ 9,900\n10% 할인"
+                            android:textSize="16dp"
+                            android:lineSpacingExtra="6dp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/img_notes3"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/image_view_style"
+                            android:clipToOutline="true"/>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/notes_115"
+                            android:layout_width="match_parent"
+                            android:layout_height="110dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@drawable/button_style"
+                            android:text="115음표 ₩ 18,400\n20% 할인"
+                            android:textSize="16dp"
+                            android:lineSpacingExtra="6dp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/img_notes4"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/image_view_style"
+                            android:clipToOutline="true"/>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/notes_355"
+                            android:layout_width="match_parent"
+                            android:layout_height="110dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@drawable/button_style"
+                            android:text="355음표 ₩ 49700\n30% 할인"
+                            android:textSize="16dp"
+                            android:lineSpacingExtra="6dp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
