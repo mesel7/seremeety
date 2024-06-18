@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -69,10 +70,10 @@ public class MypageFragment extends Fragment {
         };
         mypageViewModel.getUserData().observe(getViewLifecycleOwner(), userDataObserver);
 
-        // mypageViewModel.fetchUserData();
-
         birthdate = binding.birthdate;
         age = binding.age;
+
+        mypageViewModel.fetchUserData();
 
         // ActivityResultLauncher 초기화
         pickImageLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -123,6 +124,8 @@ public class MypageFragment extends Fragment {
                                 }
                             }, year, month, day);
                     datepickerdialog.show();
+                    datepickerdialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                    datepickerdialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
                 }
                 return true;
             }
@@ -276,12 +279,13 @@ public class MypageFragment extends Fragment {
 
     // 화면이 다시 보일 때마다 사용자 프로필을 새로 불러옴
     // 다른 프라그먼트는 onCreateView에서 처리하고 있지만 상점에서 뒤로가기를 처리하기 위함
+    /*
     @Override
     public void onResume() {
         super.onResume();
         mypageViewModel.fetchUserData();
     }
-
+    */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
