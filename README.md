@@ -59,3 +59,4 @@
 <img width="20%" src="https://github.com/mesel7/seremeety/assets/154347887/fffe1cd9-fa3d-4cff-8707-33112db3508a.png"/>
 
 ### 4. 데모 영상
+https://www.youtube.com/watch?v=31ZL3ttVj9k
